@@ -1,7 +1,8 @@
 <html>
 <head>
-    <title>Home</title>
+    <title>Registration Checking</title>
 </head>
+
 <body>
     <table border="1" width=100%>
         <!-- header -->
@@ -18,22 +19,39 @@
                 <a href="registration.php">Registration</a>
             </th>
         </tr>
-        
+
         <!-- body -->
         <tr height="200px">
             <td width=20%></td>
             <td>
                 <?php
-                    if(isset($_REQUEST['submit']))
-                    {
+                session_start();
+                $allFieldsFilled = true;
+                foreach ($_REQUEST as $key => $value) {
+                    $_SESSION[$key] = $value;
+                    if (!isset($_REQUEST[$key]) or empty($value)) {
+                        $allFieldsFilled = false;
+                        break;
+                    }
+                }
+
+                if ($allFieldsFilled && isset($_REQUEST['submit'])) {
+                    session_destroy();
                 ?>
+                    
                     <h3>Registration Completed!!</h3>
                     <a href="login.php"><i>Login now</i></a>
-                <?php }else echo "<b>Invalid request!</b>"; ?>
+                <?php
+                } else {
+                    header('Location: registration.php');
+                    exit;
+                }
+                session_abort();
+                ?>
             </td>
             <td width=20%></td>
         </tr>
-        
+
         <!-- footer -->
         <tr height="80px">
             <td colspan="3" align="center">
@@ -42,5 +60,7 @@
         </tr>
     </table>
 </body>
+
 </html>
+
 

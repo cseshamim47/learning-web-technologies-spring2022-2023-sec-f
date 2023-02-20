@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <html>
 <head>
     <title>Home</title>
@@ -21,7 +25,7 @@
         <tr height="200px">
             <td width=20%></td>
             <td>
-                <form type="post" action="registrationDone.php">
+                <form type="post" action="registrationCheck.php">
                     <fieldset>
                         <legend>Registration</legend>
                         <table align="center" >
@@ -30,7 +34,7 @@
                                     Name : 
                                 </td>
                                 <td>
-                                    <input type="text" name="name" value="">
+                                    <input type="text" name="name" value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -38,7 +42,7 @@
                                     Email : 
                                 </td>
                                 <td>
-                                    <input type="email" name="email">
+                                    <input type="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -46,7 +50,7 @@
                                     Username : 
                                 </td>
                                 <td>
-                                    <input type="text" name="username">
+                                    <input type="text" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -54,7 +58,7 @@
                                     Password : 
                                 </td>
                                 <td>
-                                    <input type="password" name="password">
+                                    <input type="password" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -62,36 +66,24 @@
                                     Confirm Password : 
                                 </td>
                                 <td>
-                                    <input type="password" name="confirmPassword">
-                                </td>
-                            </tr>
-                            <tr height=40px>
-                                <td>
-                                    Confirm Password : 
-                                </td>
-                                <td>
-                                    <input type="password" name="confirmPassword">
+                                    <input type="password" name="confirmPassword" value="<?php echo isset($_SESSION['confirmPassword']) ? $_SESSION['confirmPassword'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
                                 <td colspan="2">
-                                    <form method="post" action="" enctype="">
                                         <fieldset>
                                             <legend>Gender</legend>
                                             <input type="radio" name="Gender" value="Male"/> Male
                                             <input type="radio" name="Gender" value="Female"/> Female
                                             <input type="radio" name="Gender" value="Other"/> Other <br>
                                         </fieldset>
-                                    </form>
                                 </td>
                             </tr>
                             <tr height=100px>
                                 <td colspan="2">
-                                    <form method="post" action="" enctype="">
                                         <fieldset>
                                             <legend>Date of Birth</legend>
-                                            <input type="date" name="date" value=""/>
-                                        </fieldset>
+                                            <input type="date" name="date"/>
                                     </form>
                                 </td>
                             </tr>
