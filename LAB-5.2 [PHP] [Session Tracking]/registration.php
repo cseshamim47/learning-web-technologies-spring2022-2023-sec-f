@@ -85,7 +85,7 @@
                                 <td colspan="2">
                                         <fieldset>
                                             <legend>Date of Birth</legend>
-                                            <input type="date" name="date" value="<?php echo isset($_SESSION['date']) ? $_SESSION['date'] : ''  ?>"/>
+                                            <input type="date" name="dob" value="<?php echo isset($_SESSION['dob']) ? $_SESSION['dob'] : ''  ?>"/>
                                         </fieldset>
                                 </td>
                             </tr>
@@ -124,8 +124,7 @@
                                         }
                                         
                                         
-                                        print_r($_SESSION);
-                                        // 
+                                        // print_r($_SESSION);
                                         // echo $_SESSION['pwincorrect'];
                                     ?>
                                 </td>              

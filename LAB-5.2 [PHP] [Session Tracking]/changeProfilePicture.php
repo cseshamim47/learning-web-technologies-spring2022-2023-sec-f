@@ -4,8 +4,8 @@
     {
         header('Location: login.php');
     }
-    print_r($_SESSION);
-    // echo $_SESSION['expires']-time();
+    // print_r($_SESSION);
+    // echo $_SESSION['pictureAddress'];
 ?>
 
 <html>
@@ -30,7 +30,7 @@
 
         <tr>
             <td width=20%>
-                <table  width=100%>
+                <table border="1" width=100%>
                     <tr>
                         <th><h2>Account</h2></th>
                     </tr>
@@ -49,38 +49,37 @@
                 </table>
             </td>
             <td colspan="2">
-                <form method="post" action="#" enctype="">
-                    <fieldset>
-                        <legend>Change Password</legend>
-                        <table width=100%>
-                            <tr height=40px>
-                                <td width=20%>
-                                    Current Password : 
-                                </td>
+                <fieldset>
+                    <legend><h3>Profile Picture</h3></legend>
+                    <form method="post" action="changeProfilePictureCheck.php" enctype="multipart/form-data">
+                        <table border="0" width=100%>
+                            <tr>
                                 <td>
-                                    <input type="password" name="currentPassword">
+                                    <img width=200px src="<?php echo isset($_SESSION['profilePicture']) ? $_SESSION['profilePicture'] : "profile.jpg" ?>" alt="Profile Picture">
                                 </td>
+                                <td width=80%></td>
                             </tr>
-                            <tr height=40px>
-                                <td width=15%>
-                                    New Password : 
+                            <tr>
+                                <td height=60px>
+                                    <input type="file" name="profilePicture"  id="profilePicture">
                                 </td>
-                                <td>
-                                    <input type="password" name="newPassword">
-                                </td>
+                                <td></td>
                             </tr>
-                            <tr height=40px>
-                                <td width=15%>
-                                    Confrim New Password : 
-                                </td>
+                            <tr>
                                 <td>
-                                    <input type="password" name="confirmNewPassword">
+                                    <hr>
                                 </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="submit" value="Submit">
+                                </td>
+                                <td></td>
                             </tr>
                         </table>
-                        <input type="submit" name="" value="Submit">            
-                    </fieldset>
-                </form>
+                    </form>
+                </fieldset>
             </td>
         </tr>
         

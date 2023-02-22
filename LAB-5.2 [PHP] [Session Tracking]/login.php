@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['loggedin']) && isset($_SESSION['expires']) && $_SESSION['expires'] > time())
+    {
+        header('Location: dashboard.php');
+    }
+?>
+
 <html>
 <head>
     <title>Home</title>
@@ -21,7 +29,7 @@
         <tr height="200px">
             <td width=20%></td>
             <td>
-                <form action="">
+                <form method="post" action="loginCheck.php">
                     <fieldset>
                         <legend>Login</legend>
                         <table align="center" >
@@ -31,7 +39,7 @@
                                     Username : 
                                 </td>
                                 <td>
-                                    <input type="text" name="username">
+                                    <input type="text" name="username" value="<?php echo isset($_SESSION['lusername']) ? $_SESSION['lusername'] : ''  ?>">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -39,7 +47,7 @@
                                     Password : 
                                 </td>
                                 <td>
-                                    <input type="password" name="password">
+                                    <input type="password" name="password" value="">
                                 </td>
                             </tr>
                             <tr>
@@ -53,8 +61,20 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input type="submit" name="" value="Login"> 
+                                <input type="submit" name="submit" value="Login"> 
                                 <a href="forgotPassword.php"><i>Forgot Password?</i></a>           
+                                </td>              
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                <?php
+                                    if(isset($_SESSION['upw']))
+                                    {
+                                        echo "username or password incorrect!<br>";
+                                    }
+                                    // print_r($_SESSION);
+
+                                ?>
                                 </td>              
                             </tr>
                         </table>
@@ -74,3 +94,8 @@
     </table>
 </body>
 </html>
+
+
+<?php
+    unset($_SESSION['upw']);
+?>
