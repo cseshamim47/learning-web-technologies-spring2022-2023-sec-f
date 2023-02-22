@@ -7,6 +7,7 @@
     <title>Home</title>
 </head>
 <body>
+    <!-- header -->
     <table border="1" width=100%>
         <tr height="100px">
             <th width=20%>
@@ -21,11 +22,12 @@
                 <a href="registration.php">Registration</a>
             </th>
         </tr>
-
+        
+        <!-- body -->
         <tr height="200px">
             <td width=20%></td>
             <td>
-                <form type="post" action="registrationCheck.php">
+                <form method="post" action="registrationCheck.php">
                     <fieldset>
                         <legend>Registration</legend>
                         <table align="center" >
@@ -73,9 +75,9 @@
                                 <td colspan="2">
                                         <fieldset>
                                             <legend>Gender</legend>
-                                            <input type="radio" name="Gender" value="Male"/> Male
-                                            <input type="radio" name="Gender" value="Female"/> Female
-                                            <input type="radio" name="Gender" value="Other"/> Other <br>
+                                            <input type="radio" name="gender" value="Male"/> Male
+                                            <input type="radio" name="gender" value="Female"/> Female
+                                            <input type="radio" name="gender" value="Other"/> Other <br>
                                         </fieldset>
                                 </td>
                             </tr>
@@ -83,8 +85,8 @@
                                 <td colspan="2">
                                         <fieldset>
                                             <legend>Date of Birth</legend>
-                                            <input type="date" name="date"/>
-                                    </form>
+                                            <input type="date" name="date" value="<?php echo isset($_SESSION['date']) ? $_SESSION['date'] : ''  ?>"/>
+                                        </fieldset>
                                 </td>
                             </tr>
 
@@ -92,6 +94,40 @@
                                 <td colspan="2">
                                 <input type="submit" name="submit" value="Submit">            
                                 <input type="reset" name="" value="Reset">
+                                </td>              
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <?php
+                                        
+                                        if(isset($_SESSION['submit'])) 
+                                        {
+                                            if($_SESSION['password'] != $_SESSION['confirmPassword'])
+                                            {
+                                                echo "Password does not match!!! <br>";
+                                                exit;
+                                            } 
+
+                                            if(!isset($_SESSION['gender']))
+                                            echo "Gender not selected. <br>";
+
+                                            foreach ($_SESSION as $key => $value) {
+                                                
+                                                if($key[0] != '#')
+                                                if (!isset($_SESSION[$key]) or empty($value)) {
+                                                    echo $key. " not set! <br>";     
+                                                    break;                                               
+                                                }
+                                            }
+                                            
+
+                                        }
+                                        
+                                        
+                                        print_r($_SESSION);
+                                        // 
+                                        // echo $_SESSION['pwincorrect'];
+                                    ?>
                                 </td>              
                             </tr>
                         </table>
@@ -102,7 +138,7 @@
             </td>
             <td width=20%></td>
         </tr>
-        
+        <!-- footer -->
         <tr height="80px">
             <td colspan="3" align="center">
                 <p>copytight © 2023</p>

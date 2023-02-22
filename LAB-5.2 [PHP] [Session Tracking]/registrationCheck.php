@@ -14,9 +14,7 @@
             </th>
             <th></th>
             <th width=20%>
-                <a href="publicHome.php">Home</a> |
-                <a href="login.php">Login</a> |
-                <a href="registration.php">Registration</a>
+                <a href="login.php">Login</a>
             </th>
         </tr>
 
@@ -29,24 +27,26 @@
                 $allFieldsFilled = true;
                 foreach ($_REQUEST as $key => $value) {
                     $_SESSION[$key] = $value;
+                    $_SESSION['#'.$key] = $value;
                     if (!isset($_REQUEST[$key]) or empty($value)) {
                         $allFieldsFilled = false;
-                        break;
                     }
                 }
 
-                if ($allFieldsFilled && isset($_REQUEST['submit'])) {
-                    session_destroy();
+                if ($allFieldsFilled && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword']) {
+                    foreach ($_REQUEST as $key => $value) {
+                        if($key[0] != '#')
+                        unset($_SESSION[$key]);
+                    }
                 ?>
-                    
                     <h3>Registration Completed!!</h3>
                     <a href="login.php"><i>Login now</i></a>
-                <?php
+                    <?php
                 } else {
+                    unset($_SESSION['gender']);
                     header('Location: registration.php');
                     exit;
                 }
-                session_abort();
                 ?>
             </td>
             <td width=20%></td>
