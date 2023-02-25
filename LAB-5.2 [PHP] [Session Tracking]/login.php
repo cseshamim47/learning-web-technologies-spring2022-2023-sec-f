@@ -72,7 +72,7 @@
                                     {
                                         echo "username or password incorrect!<br>";
                                     }
-                                    // print_r($_SESSION);
+                                    // // print_r($_SESSION);
 
                                 ?>
                                 </td>              
@@ -98,4 +98,5 @@
 
 <?php
     unset($_SESSION['upw']);
+    unset($_SESSION['lusername']);
 ?>

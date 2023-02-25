@@ -4,7 +4,7 @@
     {
         header('Location: login.php');
     }
-    // print_r($_SESSION);
+    // // print_r($_SESSION);
     // echo $_SESSION['expires']-time();
 ?>
 <html>
@@ -42,11 +42,10 @@
                                 <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="changeProfilePicture.php">Change Profile Picture</a></li>
                                 <li><a href="changePassword.php">Change Password</a></li>
-                                <li><a href="publicHome.php">Logout</a></li>
+                                <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </td>
                     </tr>
-                    <!-- <tr height=400px ></tr> -->
                 </table>
             </td>
             <td colspan="2">

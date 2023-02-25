@@ -4,8 +4,7 @@
     {
         header('Location: login.php');
     }
-    print_r($_SESSION);
-    // echo $_SESSION['expires']-time();
+    // // print_r($_SESSION);
 ?>
 
 <html>
@@ -20,11 +19,12 @@
                     <img src="logo.jpg" alt="logo">
                 </a>
             </th>
-            <th></th>
+            <th align="middle">
+                <h3>Change Password</h3>
+            </th>
             <th width=20%>
-                <a href="publicHome.php">Home</a> |
-                <a href="login.php">Login</a> |
-                <a href="registration.php">Registration</a>
+                Logged in as <a href="dashboard.php"> <?php echo $_SESSION['#username']  ?></a> |
+                <a href="logout.php">Logout</a> 
             </th>
         </tr>
 
@@ -42,14 +42,14 @@
                                 <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="changeProfilePicture.php">Change Profile Picture</a></li>
                                 <li><a href="changePassword.php">Change Password</a></li>
-                                <li><a href="publicHome.php">Logout</a></li>
+                                <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </td>
                     </tr>
                 </table>
             </td>
             <td colspan="2">
-                <form method="post" action="#" enctype="">
+                <form method="post" action="changePasswordCheck.php" enctype="">
                     <fieldset>
                         <legend>Change Password</legend>
                         <table width=100%>
@@ -66,7 +66,7 @@
                                     New Password : 
                                 </td>
                                 <td>
-                                    <input type="password" name="newPassword">
+                                    <input type="password" name="password">
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -78,7 +78,19 @@
                                 </td>
                             </tr>
                         </table>
-                        <input type="submit" name="" value="Submit">            
+                        <input type="submit" name="submit" value="Submit">            
+                        <?php
+                            
+                            if(isset($_SESSION['pwChangeStatus']))
+                            {
+                                if($_SESSION['pwChangeStatus'])
+                                {
+                                    unset($_SESSION['pwChangeStatus']);
+                                    echo "Password changed!";
+                                }else echo "Password does not match!";
+                            }
+                            unset($_SESSION['pwChangeStatus']);
+                        ?>
                     </fieldset>
                 </form>
             </td>

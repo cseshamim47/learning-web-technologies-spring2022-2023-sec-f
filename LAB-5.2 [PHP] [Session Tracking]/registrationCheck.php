@@ -33,9 +33,9 @@
                     }
                 }
 
-                if ($allFieldsFilled && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword']) {
+                if ($allFieldsFilled && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword'] && isset($_REQUEST['gender'])) {
                     foreach ($_REQUEST as $key => $value) {
-                        if($key[0] != '#')
+                        if($key[0] == '#') continue;
                         unset($_SESSION[$key]);
                     }
                 ?>
@@ -43,7 +43,7 @@
                     <a href="login.php"><i>Login now</i></a>
                     <?php
                 } else {
-                    unset($_SESSION['gender']);
+                    // unset($_SESSION['gender']);
                     header('Location: registration.php');
                     exit;
                 }

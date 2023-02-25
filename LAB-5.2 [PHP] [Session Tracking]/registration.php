@@ -1,5 +1,6 @@
 <?php
     session_start();
+    // print_r($_SESSION);
 ?>
 
 <html>
@@ -75,9 +76,9 @@
                                 <td colspan="2">
                                         <fieldset>
                                             <legend>Gender</legend>
-                                            <input type="radio" name="gender" value="Male"/> Male
-                                            <input type="radio" name="gender" value="Female"/> Female
-                                            <input type="radio" name="gender" value="Other"/> Other <br>
+                                            <input type="radio" name="gender" <?php if(isset($_SESSION['gender']) && $_SESSION['gender']=='Male') echo "checked" ?> value="Male"/> Male
+                                            <input type="radio" name="gender" <?php if(isset($_SESSION['gender']) && $_SESSION['gender']=='Female') echo "checked" ?> value="Female"/> Female
+                                            <input type="radio" name="gender" <?php if(isset($_SESSION['gender']) && $_SESSION['gender']=='Other') echo "checked" ?> value="Other"/> Other <br>
                                         </fieldset>
                                 </td>
                             </tr>
@@ -107,24 +108,25 @@
                                                 echo "Password does not match!!! <br>";
                                                 exit;
                                             } 
-
-                                            if(!isset($_SESSION['gender']))
-                                            echo "Gender not selected. <br>";
-
+                                            
                                             foreach ($_SESSION as $key => $value) {
-                                                
                                                 if($key[0] != '#')
                                                 if (!isset($_SESSION[$key]) or empty($value)) {
                                                     echo $key. " not set! <br>";     
                                                     break;                                               
                                                 }
                                             }
+
+                                            if(!isset($_SESSION['gender']))
+                                            {
+                                                echo "gender not set!";
+                                            }
                                             
 
                                         }
                                         
                                         
-                                        // print_r($_SESSION);
+                                        // // print_r($_SESSION);
                                         // echo $_SESSION['pwincorrect'];
                                     ?>
                                 </td>              

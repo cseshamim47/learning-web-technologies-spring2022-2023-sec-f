@@ -4,7 +4,7 @@
     {
         header('Location: login.php');
     }
-    // print_r($_SESSION);
+    // // print_r($_SESSION);
     // echo $_SESSION['pictureAddress'];
 ?>
 
@@ -20,11 +20,12 @@
                     <img src="logo.jpg" alt="logo">
                 </a>
             </th>
-            <th></th>
+            <th align="middle">
+                <h3>Change Profile</h3>
+            </th>
             <th width=20%>
-                <a href="publicHome.php">Home</a> |
-                <a href="login.php">Login</a> |
-                <a href="registration.php">Registration</a>
+                Logged in as <a href="dashboard.php"> <?php echo $_SESSION['#username']  ?></a> |
+                <a href="logout.php">Logout</a> 
             </th>
         </tr>
 
@@ -42,7 +43,7 @@
                                 <li><a href="edit.php">Edit Profile</a></li>
                                 <li><a href="changeProfilePicture.php">Change Profile Picture</a></li>
                                 <li><a href="changePassword.php">Change Password</a></li>
-                                <li><a href="publicHome.php">Logout</a></li>
+                                <li><a href="logout.php">Logout</a></li>
                             </ul>
                         </td>
                     </tr>
