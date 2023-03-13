@@ -1,18 +1,37 @@
 <?php
     session_start();
-    if(isset($_REQUEST['submit']) && $_REQUEST['username'] == $_SESSION['#username'] && $_REQUEST['password'] == $_SESSION['#password'])
+    if(isset($_REQUEST['submit']))
     {
-        if(isset($_REQUEST['rememberMe']))
-        {
-            $_SESSION['expires'] = time()+86400;
-        }else
-        {
-            $_SESSION['expires'] = time()+30;
+        $file = fopen('user.txt', 'r');
+            
+        while(!feof($file)){
+            $data = fgets($file);
+            $user = explode('|', $data);
+            if(count($user) > 2 && $_REQUEST['username'] == trim($user[2]) && $_REQUEST['password']  == trim($user[3])){
+                setcookie('username', $_REQUEST['username'], time()+12312312, '/');
+                setcookie('lastSeen', time(), time()+12312312, '/');
+                $_SESSION['#username'] = $user[2];
+                $_SESSION['#name'] = $user[0];
+                $_SESSION['#email'] = $user[1];
+                $_SESSION['#dob'] = $user[5];
+                $_SESSION['#profilePicture'] = $user[6];
+                $_SESSION['#gender'] = $user[4];
+                $_SESSION['#password'] = $user[3];
+                
+                if(isset($_REQUEST['rememberMe']))
+                {
+                    setcookie('rememberMe', 'true', time()+12312312, '/');
+                }
+
+                unset($_SESSION['upw']);
+                unset($_SESSION['lusername']);
+                header('location: dashboard.php');
+                exit;
+            }
         }
-        $_SESSION['loggedin'] = true;
-        unset($_SESSION['upw']);
-        unset($_SESSION['lusername']);
-        header('Location: dashboard.php');   
+
+        header('location: login.php?error');
+        
     }else 
     {
         unset($_SESSION['rememberMe']);

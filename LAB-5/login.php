@@ -68,11 +68,18 @@
                             <tr>
                                 <td colspan="2">
                                 <?php
-                                    if(isset($_SESSION['upw']))
+
+                                    if(isset($_REQUEST['successful']))
+                                    {
+                                        echo "Account creation Successfull! Please login! <br>";
+                                        unset($_REQUEST['successful']);
+                                    }
+
+                                    if(isset($_REQUEST['error']))
                                     {
                                         echo "username or password incorrect!<br>";
                                     }
-                                    // // print_r($_SESSION);
+                                    // print_r($_SESSION);
 
                                 ?>
                                 </td>              

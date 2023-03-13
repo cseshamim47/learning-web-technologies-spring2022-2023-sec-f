@@ -24,27 +24,39 @@
             <td>
                 <?php
                 session_start();
+                if(isset($_REQUEST['reset']))
+                {
+                    $_SESSION = [];
+                    header('Location: registration.php');
+                    exit;
+                }
+
                 $allFieldsFilled = true;
                 foreach ($_REQUEST as $key => $value) {
                     $_SESSION[$key] = $value;
-                    $_SESSION['#'.$key] = $value;
                     if (!isset($_REQUEST[$key]) or empty($value)) {
                         $allFieldsFilled = false;
                     }
                 }
 
                 if ($allFieldsFilled && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword'] && isset($_REQUEST['gender'])) {
+                    $file = fopen('user.txt', 'a');
+                    $user = "";
                     foreach ($_REQUEST as $key => $value) {
-                        if($key[0] == '#') continue;
-                        unset($_SESSION[$key]);
+                        $_SESSION[$key] = "";
+                        $_REQUEST[$key] = "";
+                        if($key == "confirmPassword" || $key == "submit") continue;
+                        $user = $user."|".$value;
                     }
+                    $user = substr($user, 1, -1);
+                    $user = $user."|profile.jpg"."\n";
+                    fwrite($file, $user);
+                    $user = "";
                 ?>
-                    <h3>Registration Completed!!</h3>
-                    <a href="login.php"><i>Login now</i></a>
                     <?php
+                    header('Location: login.php?successful');
                 } else {
-                    // unset($_SESSION['gender']);
-                    header('Location: registration.php');
+                    header('Location: registration.php?error');
                     exit;
                 }
                 ?>

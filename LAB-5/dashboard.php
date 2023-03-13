@@ -1,12 +1,5 @@
-<?php
-    session_start();
-    if(!(isset($_SESSION['loggedin']) && isset($_SESSION['expires']) && $_SESSION['expires'] > time()))
-    {
-        header('Location: login.php');
-    }
-    // // print_r($_SESSION);
-    // echo $_SESSION['expires']-time();
-?>
+<?php include 'sessionActivation.php';?>
+
 <html>
 <head>
     <title>Dashboard</title>

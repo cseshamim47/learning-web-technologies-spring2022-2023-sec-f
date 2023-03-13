@@ -1,13 +1,14 @@
 <?php
     session_start();
-    if(isset($_SESSION['loggedin']))
-    {
-        unset($_SESSION['loggedin']);
-        unset($_SESSION['rememberMe']);
-        header('Location: publicHome.php');
-    }else
-    {
-        header('Location: publicHome.php');
-    }
+    
+    unset($_COOKIE['rememberMe']);
+    unset($_COOKIE['username']);
+    unset($_COOKIE['lastSeen']);
+    setcookie('rememberMe', '', time()-600, '/');
+    setcookie('username', '', time()-600, '/');
+    setcookie('lastSeen', '', time()-12300, '/');
+    $_SESSION=[];
+    header('Location: publicHome.php');
+    
 
 ?>

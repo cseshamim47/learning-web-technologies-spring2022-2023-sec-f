@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Home</title>
+    <title>Registration</title>
 </head>
 <body>
     <!-- header -->
@@ -94,40 +94,34 @@
                             <tr>
                                 <td colspan="2">
                                 <input type="submit" name="submit" value="Submit">            
-                                <input type="reset" name="" value="Reset">
+                                <input type="submit" name="reset" value="Reset">
                                 </td>              
                             </tr>
                             <tr>
                                 <td colspan="2">
                                     <?php
                                         
-                                        if(isset($_SESSION['submit'])) 
-                                        {
-                                            if($_SESSION['password'] != $_SESSION['confirmPassword'])
-                                            {
-                                                echo "Password does not match!!! <br>";
-                                                exit;
-                                            } 
-                                            
+                                        if(isset($_REQUEST['error'])) 
+                                        {            
                                             foreach ($_SESSION as $key => $value) {
-                                                if($key[0] != '#')
                                                 if (!isset($_SESSION[$key]) or empty($value)) {
-                                                    echo $key. " not set! <br>";     
-                                                    break;                                               
+                                                    echo $key. " not set! <br>";                                                   
                                                 }
+                                            }
+                                            if($_SESSION['password'] != $_SESSION['confirmPassword'] )                                
+                                            {
+                                                echo "password does not match!!! <br>";
                                             }
 
                                             if(!isset($_SESSION['gender']))
                                             {
                                                 echo "gender not set!";
                                             }
-                                            
 
+                                            // print_r($_SESSION);
+                                            
                                         }
-                                        
-                                        
-                                        // // print_r($_SESSION);
-                                        // echo $_SESSION['pwincorrect'];
+                                                                                
                                     ?>
                                 </td>              
                             </tr>
