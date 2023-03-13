@@ -1,42 +1,26 @@
-<?php include 'sessionActivation.php';?>
+<?php include '../Repeat/activity.php';?>
 
 <html>
 <head>
     <title>Dashboard</title>
 </head>
 <body>
-    <table border="1" width=100%>
-        <tr height="100px">
-            <th width=20%>
-                <a href="publicHome.php">
-                    <img src="logo.jpg" alt="logo">
-                </a>
-            </th>
-            <th align="middle">
-                <h3>Change Profile</h3>
-            </th>
-            <th width=20%>
-                Logged in as <a href="dashboard.php"> <?php echo $_SESSION['#username']  ?></a> |
-                <a href="logout.php">Logout</a> 
-            </th>
-        </tr>
+    
+    <?php 
+        include '../Repeat/headerUser.php';
+    ?>
 
         <tr>
             <td width=20%>
-                <table border="1" width=100%>
+                <table width=100%>
                     <tr>
-                        <th><h2>Account</h2></th>
+                        <th><h2>Change Profile Picture</h2></th>
                     </tr>
                     <tr>
                         <td>
-                            <ul>
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li><a href="view.php">View Profile</a></li>
-                                <li><a href="edit.php">Edit Profile</a></li>
-                                <li><a href="changeProfilePicture.php">Change Profile Picture</a></li>
-                                <li><a href="changePassword.php">Change Password</a></li>
-                                <li><a href="logout.php">Logout</a></li>
-                            </ul>
+                            <?php 
+                                include '../Repeat/userMenuLink.php';
+                            ?>
                         </td>
                     </tr>
                 </table>
@@ -48,7 +32,7 @@
                         <table border="0" width=100%>
                             <tr>
                                 <td>
-                                    <img width=200px src="<?php echo isset($_SESSION['#profilePicture']) ? $_SESSION['#profilePicture'] : "profile.jpg" ?>" alt="Profile Picture">
+                                    <img width=200px src="<?php echo isset($_SESSION['#profilePicture']) ? "../includes/".$_SESSION['#profilePicture'] : "../includes/profile.jpg" ?>" alt="Profile Picture">
                                 </td>
                                 <td width=80%></td>
                             </tr>
