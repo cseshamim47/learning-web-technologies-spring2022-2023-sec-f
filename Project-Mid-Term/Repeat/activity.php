@@ -1,7 +1,10 @@
 <?php
     session_start();
     // print_r($_SESSION);
-    if((isset($_COOKIE['lastSeen']) && time()-$_COOKIE['lastSeen'] < 300 && !isset($_SESSION['#username'])) || (isset($_COOKIE['rememberMe']) && !isset($_SESSION['#username'])))
+    if(!isset($_SESSION['#username']))
+    {
+
+    }else if((isset($_COOKIE['lastSeen']) && time()-$_COOKIE['lastSeen'] < 300 && !isset($_SESSION['#username'])) || (isset($_COOKIE['rememberMe']) && !isset($_SESSION['#username'])))
     {
         $file = fopen('../db/user.txt', 'r');
         while(!feof($file)){
@@ -24,7 +27,7 @@
         }
     }else if(!isset($_SESSION['#username']))
     {
-        header('Location: ../Auth/login.php');
+        header('Location: ../auth/login.php');
     }
     // print_r($_SESSION);
 ?>

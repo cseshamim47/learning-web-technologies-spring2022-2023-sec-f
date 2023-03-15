@@ -6,7 +6,7 @@
 </head>
 <body>
        <!-- header -->
-        <?php include '../Repeat/header.php';  ?>
+        <?php include '../repeat/header.php';  ?>
         <!-- body -->
 
         <tr height="200px">
@@ -45,7 +45,7 @@
                             <tr>
                                 <td colspan="2">
                                 <input type="submit" name="submit" value="Login"> 
-                                <a href="forgotPassword.php"><i>Forgot Password?</i></a>           
+                                <!-- <a href="forgotPassword.php"><i>Forgot Password?</i></a>            -->
                                 </td>              
                             </tr>
                             <tr>
@@ -80,7 +80,7 @@
 <!-- footer -->
 <?php 
     
-    include '../Repeat/footer.php'; 
+    include '../repeat/footer.php'; 
     unset($_SESSION['upw']);
     unset($_SESSION['lusername']);
 ?>

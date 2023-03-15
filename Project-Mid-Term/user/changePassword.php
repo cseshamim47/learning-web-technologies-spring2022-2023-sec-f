@@ -1,4 +1,4 @@
-<?php include '../Repeat/activity.php';?>
+<?php include '../repeat/activity.php';?>
 
 <html>
 <head>
@@ -7,7 +7,7 @@
 <body>
 
     <?php 
-        include '../Repeat/headerUser.php';
+        include '../repeat/headerUser.php';
     ?>
 
         <tr>
@@ -19,7 +19,7 @@
                     <tr>
                         <td>
                             <?php 
-                                include '../Repeat/userMenuLink.php';
+                                include '../repeat/userMenuLink.php';
                             ?>
 
                         </td>
@@ -59,15 +59,19 @@
                         <input type="submit" name="submit" value="Submit">            
                         <?php
                             
-                            if(isset($_SESSION['pwChangeStatus']))
+                            if(isset($_REQUEST['error']))
                             {
-                                if($_SESSION['pwChangeStatus'])
-                                {
-                                    unset($_SESSION['pwChangeStatus']);
-                                    echo "<br>Password changed!";
-                                }else echo "Password does not match!";
+                                echo "Password does not match! <br>";
+                                unset($_SESSION['error']);
+                            }else if(isset($_REQUEST['weak']))
+                            {
+                                echo "Password is weak! [1 special char, 1 uppercase, minimum length 5] <br>";
+                                unset($_SESSION['weak']);
+                            }else if(isset($_REQUEST['done']))
+                            {
+                                echo "Password changed!! <br>";
+                                unset($_SESSION['done']);
                             }
-                            unset($_SESSION['pwChangeStatus']);
                         ?>
                     </fieldset>
                 </form>

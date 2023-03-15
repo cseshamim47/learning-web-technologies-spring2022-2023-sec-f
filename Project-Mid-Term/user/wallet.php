@@ -5,7 +5,7 @@ include '../repeat/activity.php';
 
 <html>
 <head>
-    <title>View</title>
+    <title>Wallet</title>
 </head>
 <body>
     <?php 
@@ -16,7 +16,7 @@ include '../repeat/activity.php';
             <td width=20%>
                 <table width=100%>
                     <tr>
-                        <th><h2>View</h2></th>
+                        <th><h2>Wallet</h2></th>
                     </tr>
                     <tr>
                         <td>
@@ -29,15 +29,12 @@ include '../repeat/activity.php';
             </td>
             <td colspan="2">
                 <fieldset>
-                    <legend><h3>PROFILE</h3></legend>
+                    <legend><h3>Wallet</h3></legend>
                     <table border="0" width=100%>
                         <tr>
-                            <td width=12%>Name</td>
+                            <td width=20%>Current Balance</td>
                             <td width=30%>
-                                <?php echo ":<b>  ".$_SESSION['#name']."</b>"?> 
-                            </td>
-                            <td rowspan="3" align="center">
-                                <img width=200px src="<?php echo isset($_SESSION['#profilePicture']) ? "../includes/".$_SESSION['#profilePicture'] : "../includes/profile.jpg" ?>" alt="Profile Picture">
+                            <b>0.123123BTC</b>
                             </td>
                             <td width=40%></td>
                         </tr>
@@ -45,33 +42,36 @@ include '../repeat/activity.php';
                             <td colspan="2"><hr></td>
                         </tr>
                         <tr>
-                            <td>Email</td>
-                            <td><?php echo ":<b>  ".$_SESSION['#email']."</b>"?> </td>
+                            <td>Transaction History</td>
+                            <td>
+                                <a href="#">click to view</a>
+                            </td>
                             <td></td>
                         </tr>
                         <tr height=0>
                             <td colspan="2"><hr></td>
                         </tr>
                         <tr>
-                            <td>Gender</td>
-                            <td><?php echo ":<b>  ".$_SESSION['#gender']."</b>"?> </td>
-                            <td align="center"><a href="changeProfilePicture.php">Change</a> </td>
+                            <td>Unconfirmed Transactions</td>
+                            <td>
+                                <a href="#">click to view</a>
+                            </td>
                             <td></td>
                         </tr>
                         <tr height=0>
                             <td colspan="2"><hr></td>
                         </tr>
                         <tr>
-                            <td>Date of Birth</td>
-                            <td><?php echo ":<b>  ".$_SESSION['#dob']."</b>"?> </td>
+                            <td>Confirmed Transactions</td>
+                            <td>
+                                <a href="#">click to view</a>
+                            </td>
                             <td></td>
                         </tr>
                         <tr height=0>
                             <td colspan="2"><hr></td>
                         </tr>
-                        <tr>
-                            <td><a href="edit.php">Edit Profile</a></td>
-                        </tr>                        
+                                           
                     </table>
                 </fieldset>
 

@@ -8,7 +8,5 @@
     setcookie('username', '', time()-600, '/');
     setcookie('lastSeen', '', time()-12300, '/');
     $_SESSION=[];
-    header('Location: ../index.php');
-    
-
+    header('Location: ../auth/login.php');
 ?>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- header -->
-    <?php include '../Repeat/header.php';  ?>
+    <?php include '../repeat/header.php';  ?>
         <!-- body -->
         <tr height="200px">
             <td width=20%></td>
@@ -159,7 +159,7 @@
         <!-- footer -->
     <?php 
     
-        include '../Repeat/footer.php'; 
+        include '../repeat/footer.php'; 
         unset($_REQUEST['error']);
         unset($_REQUEST['userExist']);
     
