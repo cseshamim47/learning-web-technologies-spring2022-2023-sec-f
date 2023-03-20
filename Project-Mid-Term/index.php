@@ -1,4 +1,6 @@
-
+<?php 
+	session_start();
+?>
 
 <html>
 <head>
@@ -34,18 +36,6 @@
 			</td>
             <td width=10%></td>
         </tr>
-
-        <!-- <tr height="200px">
-            <td width=20%></td>
-            <td>
-				<h1>Send Money Anywhere, Anytime with Ease</h1>
-				<p>Our money transfer website is designed to make it easy for you to send money to your loved ones, anywhere in the world. We offer a fast, secure and convenient way to transfer money, so you can rest assured that your money will get to its destination safely.</p>
-            </td>
-			<td>
-				<img src="includes/home.jpg" alt="home" width="300px">
-			</td>
-            <td width=20%></td>
-        </tr> -->
         
         
 <!-- footer -->

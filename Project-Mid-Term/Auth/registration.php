@@ -85,11 +85,11 @@
                             <tr>
                                 <td colspan="2">
                                     <?php
-                                        
+                                        include 'checkValidity.php';
                                         if(isset($_REQUEST['error'])) 
                                         {            
                                             foreach ($_SESSION as $key => $value) {
-                                                if (!isset($_SESSION[$key]) or empty($value)) {
+                                                if (!isset($_SESSION[$key]) or empty($value) && $key != '#menuPath' && $key != '#tabname') {
                                                     echo $key. " not set! <br>";                                                   
                                                 }
                                             }
@@ -98,7 +98,7 @@
                                                 echo "password does not match!!! <br>";
                                             }else if(isset($_SESSION['password']) && !empty($_SESSION['password']))
                                             {
-                                                if (!preg_match('/^(?=.*[A-Z])(?=.*[\W])(?=.{5,})/', $_SESSION['password'])) {
+                                                if (!validatePassword($_SESSION['password'])) {
                                                     echo "Use a stronger password. [1 special char, 1 uppercase, minimum length 5] <br>";
                                                 }
                                             }
@@ -108,7 +108,7 @@
                                             }   
                                             if(isset($_SESSION['email']) && !empty($_SESSION['email']))
                                             {
-                                                if (!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL)) {
+                                                if (!isEmailValid($_SESSION['email'])) {
                                                     echo "Email address is not valid <br>";
                                                 }
                                             }
@@ -117,7 +117,7 @@
                                             {
                                                 $dateString = $_SESSION['dob']; // A date of birth to check
                                                 $dateString = explode('-',$dateString);
-                                                print_r($dateString);
+                                                // print_r($dateString);
                                                 // get the users Date of Birth
                                                 $BirthDay   = $dateString[2];
                                                 $BirthMonth = $dateString[1];
@@ -133,7 +133,7 @@
 
                                                 // generate todays timestamp
                                                 $stampToday = mktime(0, 0, 0, $today['month'], $today['day'], $today['year']);
-                                                echo $stampToday;
+                                                // echo $stampToday;
                                                 if ($stampBirth > $stampToday) {
                                                     echo 'User is NOT 15 years old, sorry!';
                                                 }

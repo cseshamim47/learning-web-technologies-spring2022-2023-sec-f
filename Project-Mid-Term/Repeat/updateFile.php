@@ -1,6 +1,6 @@
 <?php
     /// replacing a line here
-    $newUser = $_SESSION['#name'].'|'.$_SESSION['#email'].'|'.$_SESSION['#username'].'|'.$_SESSION['#password'].'|'.$_SESSION['#gender'].'|'.$_SESSION['#dob'].'|'.$_SESSION['#profilePicture'].'|'.$_SESSION['#code'];
+    $newUser = "\r\n".$_SESSION['#name'].'|'.$_SESSION['#email'].'|'.$_SESSION['#username'].'|'.$_SESSION['#password'].'|'.$_SESSION['#gender'].'|'.$_SESSION['#dob'].'|'.$_SESSION['#profilePicture'].'|'.$_SESSION['#code']."\n";
     $reading = fopen('../db/user.txt', 'r');
     $writing = fopen('../db/user.tmp', 'w');
     $replaced = false;

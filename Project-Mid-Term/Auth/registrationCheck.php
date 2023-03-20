@@ -42,9 +42,10 @@
         $BirthYear  = $dateString[0];
 
         //convert the users DoB into UNIX timestamp
+        $stampBirth = -1;
         $stampBirth = mktime(0, 0, 0, $BirthMonth, $BirthDay, $BirthYear);
 
-        // fetch the current date (minus 18 years)
+        // fetch the current date (minus 15 years)
         $today['day']   = date('d');
         $today['month'] = date('m');
         $today['year']  = date('Y') - 15;
@@ -52,12 +53,15 @@
         // generate todays timestamp
         $stampToday = mktime(0, 0, 0, $today['month'], $today['day'], $today['year']);
         echo $stampToday;
-        if ($stampBirth > $stampToday) {
+        if ($stampBirth > $stampToday || $BirthYear < 1970) {
             $allFieldsFilled = false;
         }
     }
-
-    if ( $allFieldsFilled && preg_match('/^(?=.*[A-Z])(?=.*[\W])(?=.{5,})/', $_SESSION['password']) && filter_var($_REQUEST['email'], FILTER_VALIDATE_EMAIL) && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword'] && isset($_REQUEST['gender'])) 
+    
+    /// checking password/email validity
+    include 'checkValidity.php';
+      
+    if ( $allFieldsFilled && validatePassword($_SESSION['password']) && isEmailValid($_REQUEST['email']) && isset($_REQUEST['submit']) && $_REQUEST['password'] == $_REQUEST['confirmPassword'] && isset($_REQUEST['gender'])) 
     {
         $file = fopen('../db/user.txt', 'a');
         $user = "";
@@ -68,7 +72,9 @@
             $user = $user."|".$value;
         }
         $user = substr($user, 1, -1);
-        $user = $user."|profile.jpg|0000"."\n";
+        $user = $user."|profile.jpg|0000";
+        $addNewline = "\r\n".$user;
+        $user = $addNewline;
         fwrite($file, $user);
         $user = "";
         header('Location: login.php?successful');

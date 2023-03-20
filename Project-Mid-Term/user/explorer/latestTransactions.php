@@ -42,24 +42,33 @@
                         <?php 
                             
                             $link = "https://api.blockchair.com/bitcoin/transactions?s=time(desc)&limit=100";
-                            $ch = curl_init();
-                            curl_setopt($ch,CURLOPT_URL,$link);
-                            curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-                            $result = curl_exec($ch);
-                            curl_close($ch);
-                            $result=json_decode($result,true);
-                            foreach($result['data'] as $i)
+                            $url = $link;
+                            $json_data = file_get_contents($url);
+                            $data = json_decode($json_data, true);
+                            // $ch = curl_init();
+                            // curl_setopt($ch,CURLOPT_URL,$link);
+                            // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+                            // $result = curl_exec($ch);
+                            // curl_close($ch);
+                            // $result=json_decode($result,true);
+                            $result = $data;
+                            if(isset($result['data']))
                             {
-                                echo "<tr>";
-                                echo "<td><a href=singleTransactionDetails.php?hash=".$i['hash'].">".$i['hash']."</a></td>";
-                                echo "<td>".$i['block_id']."</td>";
-                                $time = strtotime($i['time'])+21600;
-                                $time = date('d-m-Y h:i:m',$time);
-                                echo "<td>".$time."</td>";
-                                echo "<td>".$i['output_total_usd']."</td>";
-                                echo "<td>".$i['fee_usd']."</td>";
-                                echo "</tr>";
-                            }
+
+                                foreach($result['data'] as $i)
+                                {
+                                    echo "<tr>";
+                                    echo "<td><a href=singleTransactionDetails.php?hash=".$i['hash'].">".$i['hash']."</a></td>";
+                                    echo "<td>".$i['block_id']."</td>";
+                                    $time = strtotime($i['time'])+21600;
+                                    $time = date('d-m-Y h:i:m',$time);
+                                    echo "<td>".$time."</td>";
+                                    echo "<td>".$i['output_total_usd']."</td>";
+                                    echo "<td>".$i['fee_usd']."</td>";
+                                    echo "</tr>";
+                                }
+                            }else echo "api is currently not working!";
+                            
                             // echo "<pre>";
                             // print_r($result);
                         

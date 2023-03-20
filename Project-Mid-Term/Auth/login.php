@@ -1,4 +1,6 @@
-
+<?php 
+    session_start();
+?>
 
 <html>
 <head>
@@ -45,7 +47,7 @@
                             <tr>
                                 <td colspan="2">
                                 <input type="submit" name="submit" value="Login"> 
-                                <!-- <a href="forgotPassword.php"><i>Forgot Password?</i></a>            -->
+                                <a href="forgotPassword.php"><i>Forgot Password?</i></a>           
                                 </td>              
                             </tr>
                             <tr>
@@ -56,6 +58,11 @@
                                     {
                                         echo "Account creation Successfull! Please login! <br>";
                                         unset($_REQUEST['successful']);
+                                    }
+                                    if(isset($_REQUEST['pwsuccessful']))
+                                    {
+                                        echo "Password changed!!! Please login! <br>";
+                                        unset($_REQUEST['pwsuccessful']);
                                     }
 
                                     if(isset($_REQUEST['error']))

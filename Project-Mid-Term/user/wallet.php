@@ -1,6 +1,8 @@
 <?php 
 include '../repeat/activity.php';
 // print_r($_SESSION);
+// print_r($_SERVER['HTTP_REFERER']);
+// echo "<br>".$_SESSION['#menuPath'];
 ?>
 
 <html>
@@ -21,6 +23,7 @@ include '../repeat/activity.php';
                     <tr>
                         <td>
                             <?php 
+                                $_SESSION['#menuPath'] = '';
                                 include '../repeat/userMenuLink.php';
                             ?>
                         </td>
@@ -44,7 +47,7 @@ include '../repeat/activity.php';
                         <tr>
                             <td>Transaction History</td>
                             <td>
-                                <a href="#">click to view</a>
+                                <a href="wallet/transactionHistory.php">click to view</a>
                             </td>
                             <td></td>
                         </tr>
@@ -54,7 +57,7 @@ include '../repeat/activity.php';
                         <tr>
                             <td>Unconfirmed Transactions</td>
                             <td>
-                                <a href="#">click to view</a>
+                                <a href="wallet/unconfirmedTransactions.php">click to view</a>
                             </td>
                             <td></td>
                         </tr>
@@ -64,7 +67,7 @@ include '../repeat/activity.php';
                         <tr>
                             <td>Confirmed Transactions</td>
                             <td>
-                                <a href="#">click to view</a>
+                                <a href="wallet/confirmedTransactions.php">click to view</a>
                             </td>
                             <td></td>
                         </tr>

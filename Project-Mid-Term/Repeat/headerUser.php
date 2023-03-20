@@ -7,7 +7,10 @@
         <tr height="100px">
             <th width=20%>
                 <a href="../user/home.php">
-                    <img src="../includes/btc.png" alt="logo" width="200px">
+                    <img src= <?php echo isset($_SESSION['#imagePath']) ? $_SESSION['#imagePath'] : '../includes/btc.png'  ?> alt="logo" width="200px">
+                    <?php 
+                         unset($_SESSION['#imagePath']);
+                    ?>
                 </a>
             </th>
             <th align="middle">
@@ -15,7 +18,12 @@
             </th>
             <th width=20%>
                 Logged in as <a href="dashboard.php"> <?php echo $_SESSION['#username']  ?></a> |
-                <a href="logout.php">Logout</a> 
+                <a href=
+                <?php 
+                    echo isset($_SESSION['#logoutPath']) ? $_SESSION['#logoutPath'] : 'logout.php';
+                    unset($_SESSION['#logoutPath']);
+                ?>
+                >Logout</a> 
             </th>
 </tr>
 <!-- <?php 

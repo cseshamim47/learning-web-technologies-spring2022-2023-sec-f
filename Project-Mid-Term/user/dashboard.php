@@ -1,4 +1,9 @@
-<?php include '../repeat/activity.php';?>
+<?php 
+
+    include '../repeat/activity.php';
+    $_SESSION['#menuPath'] = '';
+
+?>
 <html>
 <head>
     <title>Dashboard</title>
@@ -26,17 +31,54 @@
             <td colspan="2">
                 <fieldset>
                     <legend>Dashboard</legend>
-                    <h1>Welcome <?php echo $_SESSION['#username'] ?></h1>
+                    <table border="1">
+                        <tr>
+                            <td width=50% height=20px>
+                                <h2>Free your money and invest with confidence</h2>
+                                <br>
+                                <p>Buy and Sell Crypto in Minutes <br> Instantly buy Bitcoin with credit card, debit card, or by linking your bank.</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                            
+                            </td>
+                            <td rowspan="3"><img src="../includes/mobile_dashboard.png" alt="mobileDashboard" width="400px"></td>
+                        </tr>
+                        <tr>
+                            <td height=20px></td>
+                        </tr>
+                        <tr>
+                            <td height=20px></td>
+                        </tr>
+
+                        <tr>
+                            <td rowspan="3"><img src="../includes/chart_dashboard.png" alt="mobileDashboard" width="400px"></td>
+                            <td width=50% height=20px>
+                                <h2>Free your money and invest with confidence</h2>
+                                <br>
+                                <p>Buy and Sell Crypto in Minutes <br> Instantly buy Bitcoin with credit card, debit card, or by linking your bank.</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                                <p>The full-service Bitcoin Wallet trusted by millions</p>
+                            
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height=20px></td>
+                        </tr>
+                        <tr>
+                            <td height=20px></td>
+                        </tr>
+                        
+                    </table>
                 </fieldset>
 
             </td>
         </tr>
         
-        <tr height="80px">
-            <td colspan="3" align="center">
-                <p>copytight © 2023</p>
-            </td>
-        </tr>
+        <?php 
+            include '../repeat/footer.php';
+        ?>
     </table>
 </body>
 </html>

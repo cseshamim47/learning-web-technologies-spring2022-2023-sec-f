@@ -7,7 +7,7 @@
     <?php 
         include '../../repeat/headerUserExplorer.php';
     ?>
-        <input type="hidden" value="Text">
+        <!-- <input type="hidden" value="Text"> -->
         <tr height=100px>
             <td>
                 <table width=100%>
