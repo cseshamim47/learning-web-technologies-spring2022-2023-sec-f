@@ -1,4 +1,6 @@
 <?php 
+    include 'db.php';
+    
     session_start();
     if(isset($_REQUEST['submit'])){
 
@@ -36,26 +38,17 @@
         }
         else{
 
-
-
-         $file = fopen('user.txt', 'r');
-        $user_exists = false;
-        $email_exists = false;
-        while(!feof($file)){
-            $data = fgets($file);
-            
-            $user = explode("|", $data);
-            if($user[0] == $username){
-                $user_exists = true;
-                break;
-            }
-            else if ($user[3] == $email)
-            {
-                $email_exists = true;
-                break;
-            }
-        }
-        fclose($file);
+        
+        $con = getConnection();
+        
+        $sql = "select username from user where username = '{$username}'";
+        $result = mysqli_query($con, $sql);
+        $user_exists = mysqli_fetch_assoc($result);
+        // print_r($user_exists);
+        $sql = "select email from user where email = '{$email}'";
+        $result = mysqli_query($con, $sql);
+        $email_exists = mysqli_fetch_assoc($result);
+        
         if($user_exists){
             echo "Username already exists.Try with different username!";
         }
@@ -63,12 +56,18 @@
             echo "This email is already used.Try with Another!";
         }
         else{
+            $sql = "INSERT INTO `user` (`username`, `password`, `name`, `email`, `gender`, `date`) VALUES ('{$username}', '{$password}', '{$name}', '{$email}', '{$gender}', '{$dob}')";
+            $result = mysqli_query($con, $sql);
             
-            $file = fopen('user.txt', 'a');
-            $user = $username."|".$password."|".$name."|".$email."|".$gender."|".$dob."\r\n";
-            fwrite($file, $user);
-            fclose($file);
-            header('location: login.php');
+            if($result)
+            {
+                header('location: login.php');
+                echo "registered!!";
+            }else 
+            {
+                echo "something went wrong!!";
+            }
+            
         }
           
         }

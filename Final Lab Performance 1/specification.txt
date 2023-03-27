@@ -1,3 +1,4 @@
 
 login|admin|form|can login|must have this|12377 (1).jpg|login_tag
 123|123|123|123|123|profile.jpg|123
+Auth|shamim|demo|demo|shamim|WIN_20210808_10_25_11_Pro.jpg|shamim

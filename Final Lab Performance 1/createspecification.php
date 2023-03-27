@@ -3,8 +3,6 @@ session_start();
 if(isset($_COOKIE['flag'])){
 ?>
 
-
-
 <html>
     <head>
         <title>Create Specification</title>
