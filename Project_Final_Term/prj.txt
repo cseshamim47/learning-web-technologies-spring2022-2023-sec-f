@@ -1,0 +1,16 @@
+1. send money
+2. receive money
+3. notification
+4. admin panel - done
+5. user panel - done without database
+6. authentication - done without database
+7. transaction history 
+
+
+--current 
+edit user
+register user
+
+
+database schema 
+- user table (name, username, password, publicKey, privateKey, balance);
