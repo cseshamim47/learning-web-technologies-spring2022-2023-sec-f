@@ -1,10 +1,19 @@
 <?php 
-    session_start();
+    
+    if(!isset($_SESSION)){session_start();}
+    // print_r($_COOKIE);
+    // echo "<br>";
+    // print_r($_SESSION);
+    if(!isset($_SESSION['activity']))
+    {
+        require_once('../repeat/activity.php');
+    }
 ?>
 
 <html>
 <head>
     <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
        <!-- header -->
@@ -14,7 +23,7 @@
         <tr height="200px">
             <td width=20%></td>
             <td>
-                <form method="post" action="loginCheck.php">
+                <form method="post" action="../../controllers/loginCheck.php">
                     <fieldset>
                         <legend>Login</legend>
                         <table align="center" >
@@ -24,7 +33,10 @@
                                     Username : 
                                 </td>
                                 <td>
-                                    <input type="text" name="username" value="<?php echo isset($_SESSION['lusername']) ? $_SESSION['lusername'] : ''  ?>">
+                                    <input id="username" onkeyup="usernameValidation()" class="edit" type="text" name="username" value="<?php echo isset($_SESSION['lusername']) ? $_SESSION['lusername'] : ''  ?>">
+                                </td>
+                                <td>
+                                    <p id="usernameAlert" class="alert"></p>
                                 </td>
                             </tr>
                             <tr height=40px>
@@ -32,7 +44,7 @@
                                     Password : 
                                 </td>
                                 <td>
-                                    <input type="password" name="password" value="">
+                                    <input class="edit" type="password" name="password" value="">
                                 </td>
                             </tr>
                             <tr>
@@ -46,7 +58,7 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input type="submit" name="submit" value="Login"> 
+                                <input class="clearDB_btn" type="submit" name="submit" value="Login"> 
                                 <a href="forgotPassword.php"><i>Forgot Password?</i></a>           
                                 </td>              
                             </tr>
@@ -85,9 +97,33 @@
         
         
 <!-- footer -->
+<script>
+    function usernameValidation()
+    {
+        const usernameInput = document.getElementById('username');
+        const username = usernameInput.value.trim();
+
+        if (username === '') {
+            document.getElementById('usernameAlert').innerHTML = 'Username cannot be empty!';
+        } else{
+            document.getElementById('usernameAlert').innerHTML = '';
+            const usernameArr = username.split(' ');
+            let invalid = false;
+            if(usernameArr.length > 1)
+            {
+                document.getElementById('usernameAlert').innerHTML = 'Username cannot contain spaces between letters';
+            }else 
+            {
+                document.getElementById('usernameAlert').innerHTML = '';
+            }
+
+        }
+    }
+</script>
 <?php 
     
     include '../repeat/footer.php'; 
     unset($_SESSION['upw']);
     unset($_SESSION['lusername']);
 ?>
+

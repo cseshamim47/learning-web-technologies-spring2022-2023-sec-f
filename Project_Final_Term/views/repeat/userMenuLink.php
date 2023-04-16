@@ -1,4 +1,4 @@
-<ul>
+<ul class="menu">
     <li>
     <a href=
     <?php   echo isset($_SESSION['#menuPath']) ? $_SESSION['#menuPath'].'dashboard.php' : 'dashboard.php'; ?>

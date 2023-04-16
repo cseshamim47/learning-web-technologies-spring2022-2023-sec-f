@@ -1,23 +1,23 @@
 @font-face {
     font-family: ralewayBold;
-    src: url(../../includes/fonts/Raleway-Bold.ttf);
+    src: url(../includes/fonts/Raleway-Bold.ttf);
 }
 @font-face {
     font-family: ralewayBlack;
-    src: url(../../includes/fonts/Raleway-Black.ttf);
+    src: url(../includes/fonts/Raleway-Black.ttf);
 }
 @font-face {
     font-family: ralewayThin;
-    src: url(../../includes/fonts/Raleway-Thin.ttf);
+    src: url(../includes/fonts/Raleway-Thin.ttf);
 }
 
 @font-face {
     font-family: ralewayRegular;
-    src: url(../../includes/fonts/Raleway-Regular.ttf);
+    src: url(../includes/fonts/Raleway-Regular.ttf);
 }
 
 body{
-    font-family: ralewayBlack;
+    font-family: ralewayRegular;
     background-color: #222831;
     color: #EEEEEE;
     font-size: 16px;
@@ -25,10 +25,14 @@ body{
 
 a:hover{
     color: #00ADB5 !important;
+    text-decoration: underline !important;
 }
 a{
     color: #EEEEEE;
+    text-decoration: none;
 }
+
+
 
 
 .username:hover{
@@ -114,6 +118,13 @@ tr,td,th{
 }
 
 .alert{
-    color: red;
+    color: rgb(255, 100, 100);
+    font-family: ralewayBlack !important;
 }
 
+ul{
+    list-style-type: none;
+}
+li{
+    margin-top: 10px;
+}

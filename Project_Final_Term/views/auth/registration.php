@@ -36,7 +36,7 @@
                                     Name : 
                                 </td>
                                 <td>
-                                    <input onkeyup="nameValidation()" id="name" type="text" name="name" value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''  ?>">
+                                    <input class="edit" onkeyup="nameValidation()" id="name" type="text" name="name" value="<?php echo isset($_SESSION['name']) ? $_SESSION['name'] : ''  ?>">
                                 </td>
                                 <td width=150px>
                                     <p style="color: red" id="nameAlert" class="alert"></p>
@@ -47,7 +47,7 @@
                                     Email : 
                                 </td>
                                 <td>
-                                    <input onkeyup="emailValidation()" id="email" type="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''  ?>">
+                                    <input class="edit" onkeyup="emailValidation()" id="email" type="email" name="email" value="<?php echo isset($_SESSION['email']) ? $_SESSION['email'] : ''  ?>">
                                 </td>
                                 <td>
                                     <p style="color: red" id="emailAlert" class="alert"></p>
@@ -58,7 +58,7 @@
                                     Username : 
                                 </td>
                                 <td>
-                                    <input type="text" onkeyup="usernameValidation()" id="username" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''  ?>">
+                                    <input class="edit" type="text" onkeyup="usernameValidation()" id="username" name="username" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : ''  ?>">
                                 </td>
                                 <td>
                                     <p id="usernameAlert" class="alert"></p>
@@ -69,7 +69,7 @@
                                     Password : 
                                 </td>
                                 <td>
-                                    <input onkeyup="validatePassword()" id="password" type="password" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>">
+                                    <input class="edit" onkeyup="validatePassword()" id="password" type="password" name="password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : ''  ?>">
                                 </td>
                                 <td>
                                     <p id="passAlert" class="alert"></p>
@@ -80,7 +80,7 @@
                                     Confirm Password : 
                                 </td>
                                 <td>
-                                    <input onkeyup="confPass()" id="cpassword" type="password" name="confirmPassword" value="<?php echo isset($_SESSION['confirmPassword']) ? $_SESSION['confirmPassword'] : ''  ?>">
+                                    <input class="edit" onkeyup="confPass()" id="cpassword" type="password" name="confirmPassword" value="<?php echo isset($_SESSION['confirmPassword']) ? $_SESSION['confirmPassword'] : ''  ?>">
                                 </td>
                                 <td>
                                     <p id="passMatch" class="alert"></p>
@@ -107,8 +107,8 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input type="submit" name="submit" value="Submit" >            
-                                <input type="submit" name="reset" value="Reset">
+                                <input class="clearDB_btn" type="submit" name="submit" value="Submit" >            
+                                <input class="clearDB_btn" type="submit" name="reset" value="Reset">
                                 </td>              
                             </tr>
                             <!-- <tr>
@@ -301,12 +301,12 @@
 
 </script>
 
-<?php 
-    
-        include '../repeat/footer.php'; 
-        unset($_REQUEST['error']);
-        unset($_REQUEST['userExist']);
-    
-?>
+<tr height="80px">
+        <td colspan="3" align="center">
+            <p>copyright © 2023</p>
+        </td>
+    </tr>
+</table>
 </body>
+
 </html>
