@@ -1,5 +1,5 @@
 <?php 
-     include '../models/db.php';
+     include '../../models/db.php';
      $con = getConnection();
      $query = "select * from user where username='{$_REQUEST['username']}'";
      $result = mysqli_query($con,$query);
@@ -15,7 +15,7 @@
     <body>
     <h1><a href="admin.php" class="username">Back</a></h1>
 
-        <form action="../controllers/editC.php" method="post">
+        <form action="../../controllers/editC.php" method="post">
         <table border="1" align="center" style="margin-top: 60px">
             <input type="hidden" value="<?php echo $row['username']?>" class="edit" name="username"> </td>
             <tr>
@@ -31,6 +31,12 @@
                 <td><input type="text" value="<?php echo $row['password']?>" class="edit" name="password"> </td>
             </tr>
             <tr>
+                <td>Balance  </td>
+                <td>
+                <input type="text" name="balance" value="<?php echo $row['balance'] ?>"/>
+                </td>
+            </tr>
+            <!-- <tr>
                 <td>Gender  </td>
                 <td>
                 <input type="radio" name="gender" <?php if(isset($row['gender']) && $row['gender']=='male') echo "checked" ?> value="Male" name='gender'/> Male
@@ -42,7 +48,7 @@
                 <td>
                     <input type="date" value="" name="dob">
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td colspan="2">
                     <input type="submit" class="clearDB_btn editBtn" value="Update">

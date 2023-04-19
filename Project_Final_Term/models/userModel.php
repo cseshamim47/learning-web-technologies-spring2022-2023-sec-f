@@ -31,10 +31,22 @@
 
     function updateUser($name, $email, $username, $password, $gender, $dob, $image)
     {
+        $row = seeByUsername($username);
+        if(empty($password)) $password = $row['password'];
+        if(empty($image)) $image = $row['profilePicture'];
+        
         $con = getConnection();
         $query = "update user set name='{$name}', password='{$password}', email='{$email}', gender='{$gender}', dob='{$dob}', profilePicture='{$image}' where  username='{$username}'";
         $result = mysqli_query($con,$query);
-        // $row = mysqli_fetch_assoc($result);
+        return $result;
+    }
+    
+    
+    function updatePassword($username, $password)
+    {
+        $con = getConnection();
+        $query = "update user set password='{$password}'where username='{$username}'";
+        $result = mysqli_query($con,$query);
         return $result;
     }
 

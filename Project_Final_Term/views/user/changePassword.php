@@ -28,6 +28,7 @@
                 </table>
             </td>
             <td colspan="2">
+                <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['#username'];?>">
                 <form method="post" action="../../controllers/changePasswordCheck.php" enctype="">
                     <fieldset>
                         <legend>Change Password</legend>
@@ -60,7 +61,8 @@
                                 <td id="passMatch" class="alert"></td>
                             </tr>
                         </table>
-                        <input class="clearDB_btn" type="submit" name="submit" value="Submit">            
+                        <input onclick="ajax()" class="clearDB_btn" type="button" name="submit" value="Submit">            
+                        <h1 id="ajaxAlert" class="alert"></h1>
                         <?php
                             
                             if(isset($_REQUEST['error']))
@@ -91,6 +93,38 @@
 
 <script>
 
+        let a = 0;
+        let b = 0;
+        let c = 0;
+        function ajax(){
+
+            console.log(a+b+c);
+            if((a+b+c) !== 3) return;
+            let cp = document.getElementById('cp').value;
+            let np = document.getElementById('password').value;
+
+            let username = document.getElementById('username').value;
+            
+            let data = {'username': username, 'cp': cp, 'np': np};
+            let user = JSON.stringify(data);
+
+            let xhttp = new XMLHttpRequest();
+            //xhttp.open('get', 'abc.php?username='+username, true);
+            xhttp.open('post', '../../controllers/ajaxChangePasswordCheck.php', true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.send('data='+user);
+
+            xhttp.onreadystatechange = function(){
+                
+                if(this.readyState == 4 && this.status == 200){
+                    //alert(this.responseText);
+                    // let user = JSON.parse(this.responseText);
+                    document.getElementById('ajaxAlert').innerHTML = this.responseText;
+                }
+            }
+
+        }
+
     // alert('hocche');
     // console.log('hocche');
     function curPass()
@@ -100,10 +134,12 @@
         // alert(cp+" "+wp);
         if(cp == wp)
         {
+            a = 1;
             document.getElementById('curPassAlert').innerHTML = 'Password Matched!!';
             document.getElementById('curPassAlert').style.color = 'rgb(100, 255, 108)';
         }else 
         {
+            a = 0;
             document.getElementById('curPassAlert').innerHTML = 'Password Do not match!!';
             document.getElementById('curPassAlert').style.color = 'rgb(255, 100, 100)';
         }
@@ -116,9 +152,12 @@
         let p2 = document.getElementById('password').value;
         if(p1 !== p2)
         {
+            b = 0;
             document.getElementById('passMatch').innerHTML = 'Password does not match';
         }else
         {
+            if(c === 1)
+            b = 1;
             document.getElementById('passMatch').innerHTML = '';
         }
     }
@@ -156,10 +195,12 @@
         // Return true if password meets all requirements, false otherwise
         if(hasUppercase && hasLowercase && hasNumber && hasSpecialChar && (password.length > 4))
         {
+            c = 1;
             document.getElementById('passAlert').innerHTML = '';
         }else 
         {
             // alert('shamim');
+            c = 0;
             document.getElementById('passAlert').innerHTML = 'Password not strong enough';
         }
     }   

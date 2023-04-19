@@ -57,11 +57,11 @@
         echo $sql;
         $result = mysqli_query($con,$sql);
         $_SESSION['deleted'] = true;
-        header('location: ../views/deleteUser.php');
+        header('location: ../views/admin/deleteUser.php');
     }else if(isset($_REQUEST['no']) )
     {
         // echo "shamim";
-        header('location: ../views/deleteUser.php');
+        header('location: ../views/admin/deleteUser.php');
     }
 ?>
 

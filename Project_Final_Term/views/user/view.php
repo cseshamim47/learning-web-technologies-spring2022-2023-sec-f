@@ -1,5 +1,6 @@
 <?php 
 include '../repeat/activity.php';
+require_once('../repeat/load.php'); 
 // print_r($_SESSION);
 ?>
 

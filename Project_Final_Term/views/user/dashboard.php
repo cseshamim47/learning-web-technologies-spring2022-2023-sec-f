@@ -1,6 +1,7 @@
 <?php 
 
     include '../repeat/activity.php';
+    require_once('../repeat/load.php');
     $_SESSION['#menuPath'] = '';
 
 ?>

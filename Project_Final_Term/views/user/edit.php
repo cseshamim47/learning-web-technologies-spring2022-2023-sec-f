@@ -1,4 +1,9 @@
-<?php include '../repeat/activity.php';?>
+<?php 
+
+    include '../repeat/activity.php';
+    require_once('../repeat/load.php');
+
+?>
 
 <html>
 <head>
@@ -26,8 +31,13 @@
                     </tr>
                 </table>
             </td>
+            
             <td colspan="2">
+
+            <input type="hidden" id="username" name="username" value="<?php echo $_SESSION['#username'];?>">
+
                 <fieldset>
+
                     <legend><h3>PROFILE</h3></legend>
                     <form method="post" action="../../controllers/editCheck.php">
                         <table border="0" width=100%>
@@ -73,7 +83,7 @@
                             <tr>
                                 <td>Date of Birth</td>
                                 <td>
-                                    <input type="date" name="#dob" value="<?php echo isset($_SESSION['#dob']) ? $_SESSION['#dob'] : '' ?>">
+                                    <input id="dob" type="date" name="#dob" value="<?php echo isset($_SESSION['#dob']) ? $_SESSION['#dob'] : '' ?>">
                                 </td>
                                 <td></td>
                             </tr>
@@ -82,11 +92,14 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="clearDB_btn" type="submit" name="#submit" value="Submit">
+                                    <input class="clearDB_btn" type="button" name="#submit" value="Submit" onclick="ajax()">
                                 </td>
-                            </tr>                        
+                            </tr>   
+                                              
                             <tr>
                                 <td colspan="2">
+                                        <h1 id="ajaxAlert" class="alert"></h1>
+
                                         <?php
                                             
                                             if(isset($_REQUEST['error'])) 
@@ -125,6 +138,46 @@
 
     <script>
     
+    function ajax(){
+
+        let gender = 'Male;'
+        var ele = document.getElementsByName('#gender');
+          
+        for(i = 0; i < ele.length; i++) {
+            if(ele[i].checked)
+            {
+                gender = ele[i].value;
+            }
+        }
+
+        let username = document.getElementById('username').value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let dob = document.getElementById('dob').value;
+        
+        console.log(name);
+        console.log(email);
+        console.log(gender);
+        console.log(dob);
+        console.log(username);
+        
+        let data = {'username': username, 'name': name, 'email': email, 'gender':gender, 'dob':dob};
+        let user = JSON.stringify(data);
+
+        let xhttp = new XMLHttpRequest();
+        //xhttp.open('get', 'abc.php?username='+username, true);
+        xhttp.open('post', '../../controllers/ajaxEditCheck.php', true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('data='+user);
+
+        xhttp.onreadystatechange = function(){
+            
+            if(this.readyState == 4 && this.status == 200){
+                document.getElementById('ajaxAlert').innerHTML = this.responseText;
+            }
+        }
+
+    }
 
     function confPass()
     {

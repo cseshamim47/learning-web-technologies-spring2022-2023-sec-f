@@ -1,19 +1,19 @@
 @font-face {
     font-family: ralewayBold;
-    src: url(../models/fonts/Raleway-Bold.ttf);
+    src: url(../../includes/fonts/Raleway-Bold.ttf);
 }
 @font-face {
     font-family: ralewayBlack;
-    src: url(../models/fonts/Raleway-Black.ttf);
+    src: url(../../includes/fonts/Raleway-Black.ttf);
 }
 @font-face {
     font-family: ralewayThin;
-    src: url(../models/fonts/Raleway-Thin.ttf);
+    src: url(../../includes/fonts/Raleway-Thin.ttf);
 }
 
 @font-face {
     font-family: ralewayRegular;
-    src: url(../models/fonts/Raleway-Regular.ttf);
+    src: url(../../includes/fonts/Raleway-Regular.ttf);
 }
 
 body{
@@ -109,3 +109,21 @@ tr,td,th{
     margin-left: 124px;
     
 }
+
+
+table{
+    border-collapse: collapse;
+}
+
+.top
+{
+    border: 1px solid white;
+}
+
+/* .top{
+    border: 1px solid white;
+}
+
+.x{
+    border: none;
+} */
