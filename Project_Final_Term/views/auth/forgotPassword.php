@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Home</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body">
@@ -51,8 +51,8 @@
   <tr>
     <td>Name</td>
     <td id="name"></td>
-    <td rowspan="3" id="image">
-        
+    <td rowspan="3">
+        <img src="" alt="" id="image" width="200px">
     </td>
   </tr>
   <tr>
@@ -65,8 +65,11 @@
   </tr>
 </table>
 
-<h3 id="sendAlert"></h3>
-<input type="button" name="send" value="Send New Password">
+<h3 id="sendAlert" align='center'></h3>
+
+<p align='center'>
+    <input onclick="sendPass()" id="sendBtn" type="button" name="send" class='clearDB_btn' value="Send" style="display: none;">
+</p>
 
 <table align="center">
 <tr height="80px">
@@ -77,58 +80,69 @@
 </table>
 
 <script>
-
-    function showTable() {
-        var table = document.getElementById("myTable");
-        if (table.style.display === "none") {
-            table.style.display = "table";
-        } else {
-            table.style.display = "none";
+    let name = '';
+    let Username = '';
+    let email = '';
+    let sec = 3;
+    function sendPass()
+    {
+        let data = {'username': Username, 'email': email, 'name': name};
+        let user = JSON.stringify(data);
+        let xhttp = new XMLHttpRequest();
+        xhttp.open('post', '../../controllers/sendPassword.php', true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.send('data='+user);
+        
+        document.getElementById('alert').innerHTML = "Password Sending.... Please Wait!"
+        
+        xhttp.onreadystatechange = function(){
+                    
+            if(this.readyState == 4 && this.status == 200){
+                document.getElementById('alert').innerHTML = "New Password Sent!!!";
+            }   
         }
     }
-    var imageShown = false;
+    function showTable() {
+        var table = document.getElementById("myTable");
+        var btn = document.getElementById('sendBtn');
+        if (table.style.display === "none") {
+            table.style.display = "table";
+            btn.style.display = "block";
+        }
+    }
     function ajax()
     {
         let username = document.getElementById('username').value;
 
         let xhttp = new XMLHttpRequest();
         xhttp.open('get', '../../controllers/ajaxForgotPassword.php?username='+username, true);
-        // xhttp.open('post', 'abc.php', true);
         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhttp.send();
-        // console.log('working');
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
-                //alert(this.responseText);
                 let user = JSON.parse(this.responseText);
                 if(user === null)
                 {
-                    alert('No user found!!');
+                    document.getElementById('alert').innerHTML = 'No user found!!';
                 }else
                 {
                     console.log(user.name);
+                    name = user.name;
+                    Username = user.username;
+                    email = user.email;
+                    // console.log(username);
                     document.getElementById('sendAlert').innerHTML = "Get new password to your gmail?";
+                    document.getElementById('sendAlert').style.color = 'rgb(100, 255, 108';
                     document.getElementById('alert').innerHTML = "Is this you?";
                     document.getElementById('name').innerHTML = user.name;
                     document.getElementById('tusername').innerHTML = user.username;
                     document.getElementById('email').innerHTML = user.email;
 
-                    var imgElement = document.createElement("img");
-  
-                    // Set the image source and alt text
-                    imgElement.src = "../../includes/"+user.profilePicture;
-                    imgElement.alt = "pp";
-                    
-                    // Get the container element where the image will be displayed
-                    var container = document.getElementById("image");
-                    
-                    // Add the image element to the container
-                    container.appendChild(imgElement);
-
+                    var image = document.getElementById("image");
+                    image.setAttribute("src", "../../includes/"+user.profilePicture);
                     
                     showTable();
                 }
-                // console.log(user.name);
             }
         }
     }

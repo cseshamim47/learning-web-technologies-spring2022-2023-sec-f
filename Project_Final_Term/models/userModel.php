@@ -9,10 +9,10 @@
         // print_r($result);
         return $row;
     }
-    function seeByEmail($name)
+    function seeByEmail($email)
     {
         $con = getConnection();
-        $query = "select * from user where email='{$name}'";
+        $query = "select * from user where email='{$email}'";
         $result = mysqli_query($con,$query);
         $row = mysqli_fetch_assoc($result);
         return $row;
