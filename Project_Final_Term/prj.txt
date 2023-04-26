@@ -14,3 +14,17 @@ register user
 
 database schema 
 - user table (name, username, password, publicKey, privateKey, balance);
+
+
+bank table
+- Name
+- username
+- balance
+
+transaction 
+- trxId
+- username
+- time
+- amount
+- payType
+- accNo

@@ -24,7 +24,7 @@
 
             unset($_SESSION['upw']);
             unset($_SESSION['lusername']);
-            header('location: ../views/user/dashboard.php');
+            header('location: ../views/auth/tac.php');
             exit;
         }else 
         {

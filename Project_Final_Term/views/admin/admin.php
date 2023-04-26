@@ -21,8 +21,8 @@
             <td class="tdClass"><a href="adminSettings.php" class="tda">admin settings</a></td>
         </tr>
         <tr>
-            <td class="tdClass"><a href="../controllers/downloadDB.php" class="tda">backup database</a></td>
-            <td class="tdClass"><a href="../controllers/clearDB.php" class="tda">clear database</a></td>
+            <td class="tdClass"><a href="../../controllers/downloadDB.php" class="tda">backup database</a></td>
+            <td class="tdClass"><a href="../../controllers/clearDB.php" class="tda">clear database</a></td>
         </tr>
     </table>
 
