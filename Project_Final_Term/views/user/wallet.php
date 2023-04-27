@@ -1,5 +1,6 @@
 <?php 
 include '../repeat/activity.php';
+require_once('../repeat/load.php');
 // print_r($_SESSION);
 // print_r($_SERVER['HTTP_REFERER']);
 // echo "<br>".$_SESSION['#menuPath'];
@@ -38,7 +39,12 @@ include '../repeat/activity.php';
                         <tr>
                             <td width=20%>Current Balance</td>
                             <td width=30%>
-                            <b>0.123123BTC</b>
+                            <b>
+                                <?php 
+                                    // print_r($_SESSION);
+                                    echo $_SESSION['#balance']." BTC";
+                                ?>
+                            </b>
                             </td>
                             <td width=40%></td>
                         </tr>
@@ -58,7 +64,7 @@ include '../repeat/activity.php';
                         <tr>
                             <td>Deposit From Bank</td>
                             <td>
-                                <a href="wallet/depositFromBank.php">click to view</a>
+                                <a href="wallet/depositFromBank.php">click here</a>
                             </td>
                             <td></td>
                         </tr>
@@ -68,7 +74,7 @@ include '../repeat/activity.php';
                         <tr>
                             <td>Transfer Money</td>
                             <td>
-                                <a href="wallet/confirmedTransactions.php">click to view</a>
+                                <a href="wallet/transferMoney.php">click here</a>
                             </td>
                             <td></td>
                         </tr>
@@ -84,7 +90,7 @@ include '../repeat/activity.php';
         
         <tr height="80px">
             <td colspan="3" align="center">
-                <p>copytight © 2023</p>
+                <p>copyright © 2023</p>
             </td>
         </tr>
     </table>

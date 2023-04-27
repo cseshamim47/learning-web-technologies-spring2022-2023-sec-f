@@ -8,4 +8,5 @@
     $_SESSION['#profilePicture'] = $row['profilePicture'];
     $_SESSION['#gender'] = $row['gender'];
     $_SESSION['#password'] = $row['password'];
+    $_SESSION['#balance'] = $row['balance'];
 ?>
