@@ -6,8 +6,7 @@ bank table
 
 transaction 
 - trxId
-- username
+- sender
+- receiver
 - time
 - amount
-- payType
-- accNo

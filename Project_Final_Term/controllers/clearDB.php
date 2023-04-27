@@ -7,8 +7,8 @@
   <body>
     <form action="clearDB.php" method="post">
       <h1 class="lightFont clearDB">Are you sure you want to erase 'user' table from 'blockchain' database? </h1>
-      <input type="submit" value='Yes' class="clearDB_btn1 clearDB_btn" name="yes">
-      <input type="submit" value='No' class="clearDB_btn2 clearDB_btn" name="no">
+      <input type="submit" value='Yes' class="btn1 btn" name="yes">
+      <input type="submit" value='No' class="btn2 btn" name="no">
     </form>
 
   </body>

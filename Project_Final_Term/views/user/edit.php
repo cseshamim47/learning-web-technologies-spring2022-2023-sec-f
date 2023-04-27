@@ -92,7 +92,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="clearDB_btn" type="button" name="#submit" value="Submit" onclick="ajax()">
+                                    <input class="btn" type="button" name="#submit" value="Submit" onclick="ajax()">
                                 </td>
                             </tr>   
                                               

@@ -40,8 +40,8 @@
     <form action="deleteUser.php?username=<?php echo $_REQUEST['username'] ?? '' ?>" method="post">
       <h1 class="lightFont clearDB">Are you sure you want delete the following user? </h1>
       <input type="hidden" value=" name="username">
-      <input type="submit" value='Yes' class="clearDB_btn1 clearDB_btn deleteUser_btn" name="yes">
-      <input type="submit" value='No' class="clearDB_btn2 clearDB_btn" name="no">
+      <input type="submit" value='Yes' class="btn1 btn deleteUser_btn" name="yes">
+      <input type="submit" value='No' class="btn2 btn" name="no">
     </form>
 
   </body>

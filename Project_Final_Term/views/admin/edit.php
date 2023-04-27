@@ -51,7 +51,7 @@
             </tr> -->
             <tr>
                 <td colspan="2">
-                    <input type="submit" class="clearDB_btn editBtn" value="Update">
+                    <input type="submit" class="btn editBtn" value="Update">
                 </td>
             </tr>
             

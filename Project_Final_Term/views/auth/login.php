@@ -58,7 +58,7 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input class="clearDB_btn" type="submit" name="submit" value="Login"> 
+                                <input class="btn" type="submit" name="submit" value="Login"> 
                                 <a href="forgotPassword.php"><i>Forgot Password?</i></a>           
                                 </td>              
                             </tr>

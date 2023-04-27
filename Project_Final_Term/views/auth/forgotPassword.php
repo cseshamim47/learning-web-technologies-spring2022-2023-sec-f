@@ -29,7 +29,7 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input id="button" onclick="ajax()" class="clearDB_btn" type="button" name="submit" value="Submit"> 
+                                <input id="button" onclick="ajax()" class="btn" type="button" name="submit" value="Submit"> 
                                 </td>              
                             </tr>
                            
@@ -68,7 +68,7 @@
 <h3 id="sendAlert" align='center'></h3>
 
 <p align='center'>
-    <input onclick="sendPass()" id="sendBtn" type="button" name="send" class='clearDB_btn' value="Send" style="display: none;">
+    <input onclick="sendPass()" id="sendBtn" type="button" name="send" class='btn' value="Send" style="display: none;">
 </p>
 
 <table align="center">

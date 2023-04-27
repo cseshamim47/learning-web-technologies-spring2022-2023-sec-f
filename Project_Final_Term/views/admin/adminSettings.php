@@ -10,7 +10,7 @@
     <label for="username">Username: <b id="cseshamim47">cseshamim47</b></label><br>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password"><br><br>
-    <input type="submit" class="clearDB_btn" name="submit" value="Change">
+    <input type="submit" class="btn" name="submit" value="Change">
     </form>
 
     </body>

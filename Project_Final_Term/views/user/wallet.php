@@ -56,9 +56,9 @@ include '../repeat/activity.php';
                             <td colspan="2"><hr></td>
                         </tr>
                         <tr>
-                            <td>Unconfirmed Transactions</td>
+                            <td>Deposit From Bank</td>
                             <td>
-                                <a href="wallet/unconfirmedTransactions.php">click to view</a>
+                                <a href="wallet/depositFromBank.php">click to view</a>
                             </td>
                             <td></td>
                         </tr>
@@ -66,7 +66,7 @@ include '../repeat/activity.php';
                             <td colspan="2"><hr></td>
                         </tr>
                         <tr>
-                            <td>Confirmed Transactions</td>
+                            <td>Transfer Money</td>
                             <td>
                                 <a href="wallet/confirmedTransactions.php">click to view</a>
                             </td>

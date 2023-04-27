@@ -50,6 +50,17 @@
         return $result;
     }
 
+    function updateBalance($username, $amount)
+    {
+        $row = seeByUsername($username);
+        $curBal = $row['balance'];
+        $curBal = $curBal + $amount;
+        $con = getConnection();
+        $query = "update user set balance='{$curBal}' where username='{$username}'";
+        $result = mysqli_query($con,$query);
+        return $result;
+    }
+
 
     // seeByUsername('shamim');
 ?>

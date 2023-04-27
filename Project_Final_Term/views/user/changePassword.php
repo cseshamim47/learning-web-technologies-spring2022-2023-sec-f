@@ -61,7 +61,7 @@
                                 <td id="passMatch" class="alert"></td>
                             </tr>
                         </table>
-                        <input onclick="ajax()" class="clearDB_btn" type="button" name="submit" value="Submit">            
+                        <input onclick="ajax()" class="btn" type="button" name="submit" value="Submit">            
                         <h1 id="ajaxAlert" class="alert"></h1>
                         <?php
                             

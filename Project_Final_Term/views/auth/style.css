@@ -65,7 +65,7 @@ a{
     /* margin-top: 200px; */
 }
 
-.clearDB_btn, .editUser, .deleteUser{
+.btn, .editUser, .deleteUser{
     width: 100px;
     height: 40px;
     font-family: ralewayBlack;
@@ -74,15 +74,15 @@ a{
     border: none;
 }
 
-.clearDB_btn:hover{
+.btn:hover{
     background-color: #00ADB5;
     border: none;
 }
 
-.clearDB_btn1{
+.btn1{
     margin-left: 190px;
 }
-.clearDB_btn2{
+.btn2{
     margin-left: 10px;
 }
 

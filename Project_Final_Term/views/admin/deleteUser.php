@@ -49,8 +49,8 @@
                 echo "<td>".$row['password']."</td>";
                 echo "<td>".$row['balance']."</td>";
                 ?>
-                <td><a href='../../controllers/deleteUser.php?username=<?php echo $row['username']?>' ><input type='submit' value='delete' name='delete' class='clearDB_btn'></a></td>
-                <td><a href='edit.php?username=<?php echo $row['username']?>' ><input type='submit' value='edit' name='edit' class='clearDB_btn'></a></td>
+                <td><a href='../../controllers/deleteUser.php?username=<?php echo $row['username']?>' ><input type='submit' value='delete' name='delete' class='btn'></a></td>
+                <td><a href='edit.php?username=<?php echo $row['username']?>' ><input type='submit' value='edit' name='edit' class='btn'></a></td>
                     
                     <td class="x"></td>
                 <?php 

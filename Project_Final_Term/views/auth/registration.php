@@ -107,8 +107,8 @@
 
                             <tr>
                                 <td colspan="2">
-                                <input class="clearDB_btn" type="submit" name="submit" value="Submit" >            
-                                <input class="clearDB_btn" type="submit" name="reset" value="Reset">
+                                <input class="btn" type="submit" name="submit" value="Submit" >            
+                                <input class="btn" type="submit" name="reset" value="Reset">
                                 </td>              
                             </tr>
                             <!-- <tr>

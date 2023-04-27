@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input type="submit" name="submit" value="Submit">
+                                    <input type="submit" name="submit" value="Submit" class="btn">
                                 </td>
                                 <td></td>
                             </tr>
