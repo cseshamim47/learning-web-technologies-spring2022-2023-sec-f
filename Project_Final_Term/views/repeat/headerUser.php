@@ -18,7 +18,7 @@
                 
             </th>
             <th width=20%>
-                Logged in as <a href="dashboard.php"> <?php echo $_SESSION['#username']  ?></a> |
+                Logged in as <a href="dashboard.php"> <b class="username_"> <?php echo $_SESSION['#username']  ?> </b></a> |
                 <a href=
                 <?php 
                     echo isset($_SESSION['#logoutPath']) ? $_SESSION['#logoutPath'] : 'logout.php';

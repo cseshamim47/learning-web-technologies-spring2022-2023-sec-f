@@ -92,7 +92,7 @@
         // $user = "";
         require_once('../models/userModel.php');
         $result = insertUser($_SESSION['name'],$_SESSION['email'],$_SESSION['username'],$_SESSION['password'],$_SESSION['gender'],$_SESSION['dob'],'profile.jpg');
-        header('Location: ../views/auth/login.php?successful');
+        header('Location: ../views/auth/tac.php');
     }else {
         header('Location: ../views/auth/registration.php?error');
     }

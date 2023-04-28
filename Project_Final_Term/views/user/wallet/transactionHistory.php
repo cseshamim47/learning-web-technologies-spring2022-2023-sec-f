@@ -33,14 +33,14 @@ include '../../repeat/activity.php';
                 ?>
                 >Logout</a> 
             </th>
-    </tr>
-    <?php 
-        // include '../../repeat/headerUser.php';
-        $_SESSION['#tabname'] = 'Wallet';
-        $_SESSION['#back'] = '../wallet.php';
-        include '../../repeat/back.php';
+        </tr>
+        <?php 
+            // include '../../repeat/headerUser.php';
+            $_SESSION['#tabname'] = 'Wallet';
+            $_SESSION['#back'] = '../wallet.php';
+            include '../../repeat/back.php';
 
-    ?>
+        ?>
     
         <tr>
             <td width=20%></td>
@@ -48,98 +48,12 @@ include '../../repeat/activity.php';
                 <fieldset>
                     <legend><h3>Transaction History</h3></legend>
                     <form action="transactionHistory.php" method="get">
-                    <select name="filter">
-                        <option value="received"<?php if(isset($_GET['filter']) && $_GET['filter'] == 'received') echo ' selected'; ?>>Received</option>
-                        <option value="sent"<?php if(isset($_GET['filter']) && $_GET['filter'] == 'sent') echo ' selected'; ?>>Sent</option>
+                    <select name="filter" id="filter" > 
+                        <option value="received">Received</option>
+                        <option value="sent">Sent</option>
                     </select>
-                    <input type="submit" value="submit" name="Submit">
                     </form>
-                    
-                    <?php 
-                    
-                        if(isset($_GET['filter']) && $_GET['filter'] == 'sent')
-                        {
-                            echo "<b>Sent Transactions</b><br>";     
-                    ?>
-                        <table border="1" width=100%>
-                            <tr>
-                                <th>Sent To</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Time</th>
-                            </tr>
-
-                            <tr>
-                                <td>abdur_rabbi_rocks</td>
-                                <td>12312 USD</td>
-                                <td>unconfirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td>
-                            </tr>
-                            <tr>
-                                <td>abdur_rabbi_rocks</td>
-                                <td>12312 USD</td>
-                                <td>confirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td>
-                            </tr>
-                            <tr>
-                                <td>abdur_rabbi_rocks</td>
-                                <td>12312 USD</td>
-                                <td>confirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td> 
-                            </tr>
-                        </table>
-                    <?php 
-                        
-                        
-                            }else 
-                            {
-                                echo "<b>Received Transactions</b><br>";                    
-                    ?>
-                        <table border="1" width=100%>
-                            <tr>
-                                <th>From</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Time</th>
-                                
-                            </tr>
-
-                            <tr>
-                                <td>a1313asfi_r78967s</td>
-                                <td>12312 USD</td>
-                                <td>confirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td>
-                            </tr>
-                            <tr>
-                                <td>a1313asfi_r78967s</td>
-                                <td>12312 USD</td>
-                                <td>confirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td>
-                            </tr>
-                            <tr>
-                                <td>a1313asfi_r78967s</td>
-                                <td>12312 USD</td>
-                                <td>confirmed</td>
-                                <td><?php 
-                                    echo date('d-m-Y h:i:s', time()-25200);
-                                ?></td>
-                            </tr>
-                            
-                        </table>
-
-                    <?php 
-                            }
-                    ?>
+                    <div id="tableContainer"></div>
                     
                 </fieldset>
 
@@ -150,5 +64,34 @@ include '../../repeat/activity.php';
             include '../../Repeat/footer.php';
         ?>
     </table>
+
+
+    <script>
+        var filterSelect = document.getElementById("filter");
+        var selectedValue = 'received';
+        filterSelect.addEventListener("change", function() {
+        selectedValue = filterSelect.options[filterSelect.selectedIndex].value;
+            f();
+        // console.log("Selected filter: " + selectedValue);
+        });
+
+        function f()
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../../../controllers/ajaxTransactionHistory.php");
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('select='+selectedValue);
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // alert(this.responseText);
+                    var tableHtml = xhr.responseText;
+                    document.getElementById("tableContainer").innerHTML = tableHtml;
+                }
+            };
+
+        }
+        f();
+    </script>
 </body>
 </html>

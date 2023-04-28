@@ -128,3 +128,9 @@ ul{
 li{
     margin-top: 10px;
 }
+
+.username_{
+    font-family: ralewayBlack !important;
+    font-size: 20px;
+    color:#00ADB5;
+}

@@ -48,7 +48,8 @@ function f()
     const checkbox = document.getElementById('agree');
     if(checkbox.checked)
     {
-        window.location.href = '../user/dashboard.php';
+        window.location.href = 'login.php?successful';
+
     }else
     {
         alert("Please agree to continue");
