@@ -18,7 +18,7 @@
     <table border='1' align="center" class="adminTable">
         <tr>
             <td class="tdClass"><a href="deleteUser.php" class="tda">delete user</a></td>
-            <td class="tdClass"><a href="adminSettings.php" class="tda">admin settings</a></td>
+            <td class="tdClass"><a href="admin_dashboard.php" class="tda">All Controls</a></td>
         </tr>
         <tr>
             <td class="tdClass"><a href="../../controllers/downloadDB.php" class="tda">backup database</a></td>

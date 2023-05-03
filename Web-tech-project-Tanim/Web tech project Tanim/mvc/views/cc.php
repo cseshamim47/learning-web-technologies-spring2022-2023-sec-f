@@ -1,21 +1,29 @@
 <html>
-    <head>
-        <title>Currency Converter</title>
-        <link rel="stylesheet" href="../../style.css">
-    </head>
+    <head><title>Currency Converter</title></head>
     <body >
-        <h1> <a href="../explorer.php">Back</a> </h1>
-        <h1>Currency Converter</h1>
-
-    <style>
+    <h1>Currency Converter</h1>
+  <header style="text-align: right;">
+  
+      <nav>
+      <a href="../views/user_dashboard.php">Dashboard</a>
+      
+      </nav>
+    </header>
+    <style>fieldset {
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        background-color: #ADD8E6; /* Change to a light blue color */
+    background-color: rgba(173, 216, 230, 0.9); 
+        padding: 20px;
+      }
       div.result {
-        color: greenyellow;
+        color: red;
         font-size: 24px;
       }
 </style>
         <fieldset>
             <legend>Currency Converter</legend>
-            <form action="conversion.php" method="get">
+            <form action="../views/cc.php" method="get">
         Enter BTC amount: <input type="text" name="input"/>
         <br>
         Select Currency: 
@@ -50,7 +58,7 @@
             $outoput = $cc_input * 2613479.47;
         }
 
-        echo '<h1 style="color: greenyellow;">' . number_format($outoput, 2) . ' ' . ucfirst($cc_dropdown) . '</h1>';
+        echo '<h1 style="color: red;">' . number_format($outoput, 2) . ' ' . ucfirst($cc_dropdown) . '</h1>';
     }
     ?>
 </div>

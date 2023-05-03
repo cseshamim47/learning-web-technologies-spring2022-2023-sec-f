@@ -10,7 +10,11 @@
     <?php 
         include '../repeat/headerUser.php';
     ?>
-
+        <tr>
+            <td>
+            <h1><a href="settings.php" class="username">Back</a></h1>
+            </td>
+        </tr>
         <tr>
             <td width=20%>
                 <table  width=100%>
